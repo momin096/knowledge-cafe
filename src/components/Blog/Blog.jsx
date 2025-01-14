@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-const Blog = ({ blog , handleAddToBookMark}) => {
+const Blog = ({ blog , handleAddToBookMark, handleMarkAsRead}) => {
     const { title, cover, author_img, author, posted_date, reading_time ,hashtags} = blog;
 
     return (
@@ -35,7 +35,7 @@ const Blog = ({ blog , handleAddToBookMark}) => {
                         hashtags.map((hash,idx) => <span key={idx} className='mr-2'><a href="#">{hash}</a></span>)
                     }
                 </p>
-                <a className='text-violet-900 underline ' href="#">Mark as read</a>
+                <button onClick={() => handleMarkAsRead(reading_time)} className='text-violet-900 underline ' >Mark as read</button>
             </div>
         </div>
     );
@@ -43,7 +43,8 @@ const Blog = ({ blog , handleAddToBookMark}) => {
 
 Blog.propTypes = {
     blog: PropTypes.object.isRequired,
-    handleAddToBookMark: PropTypes.func.isRequired
+    handleAddToBookMark: PropTypes.func.isRequired,
+    handleMarkAsRead: PropTypes.func.isRequired,
 }
 
 
